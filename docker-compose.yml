@@ -1,7 +1,22 @@
-version: "3.8"
+version: "3"
 services: 
+  docker-tutorial:
+    image: kim/tutorial
+    build:
+      context: ./dockerfiles
+      dockerfile: base.dockerfile
+  remote-container:
+    image: kim/tutorial-remote
+    build:
+      context: ./dockerfiles
+      dockerfile: remote.dockerfile
+    ports:
+      - "50503:22"
   dev:
-    image: python
+    image: kim/tutorial-remote
     working_dir: /workspace
     volumes: 
       - ./:/workspace
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
