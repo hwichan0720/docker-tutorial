@@ -7,17 +7,14 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     # SSHサーバが動作するために必要なsockファイルが配置されるディレクトリを用意
     mkdir /var/run/sshd && \
-    # rootでログインできるようにするため、パスワードを設定
-    # echo 'root:password' | chpasswd && \
-    # パスワードでのログインをできないようにする
+    # rootでログインできるようにパスワードを設定
+    echo 'root:password' | chpasswd && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config # 
 
-# SSHで使用する公開鍵をここでコピーする
+# 公開鍵コピー
 WORKDIR /root/.ssh
 COPY id_rsa.pub authorized_keys
-# SSHポートを公開する(Docker Composeで別のポートにバインドするので22番ポートのまま)
+# SSHポートを公開する
 EXPOSE 22
-
-# その他開発に必要なプログラムのインストールなど
 
 CMD ["/usr/sbin/sshd", "-D"]

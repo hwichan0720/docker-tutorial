@@ -134,3 +134,10 @@ dmypy.json
 .pyre/
 
 id_rsa.pub
+wmt17_en_de
+*.en
+*.de
+*.pt
+*.idx
+*.bin
+*.txt

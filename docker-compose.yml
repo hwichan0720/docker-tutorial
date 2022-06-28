@@ -4,7 +4,7 @@ services:
     image: kim/tutorial
     build:
       context: ./dockerfiles
-      dockerfile: base.dockerfile
+      dockerfile: base.dockerfiles
   remote-container:
     image: kim/tutorial-remote
     build:
