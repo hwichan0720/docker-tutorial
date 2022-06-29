@@ -16,7 +16,7 @@ https://docs.google.com/presentation/d/1H4uXBLe3Ofpd0BeNZXUlL2Saz5qR26FsAxUjLscY
 
 `docker-compose up -d <service name>`
 
-VSCode の Remote Containers を使いたい場合 <service name> に dev を指定
+VSCode の Remote Containers を使いたい場合 <service name> は dev を指定
 
 ## Stop docker container
 
