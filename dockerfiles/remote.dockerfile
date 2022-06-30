@@ -7,8 +7,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     # SSHサーバが動作するために必要なsockファイルが配置されるディレクトリを用意
     mkdir /var/run/sshd && \
-    # rootでログインできるようにパスワードを設定
-    echo 'root:password' | chpasswd && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config # 
 
 # 公開鍵コピー
